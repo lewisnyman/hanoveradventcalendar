@@ -1,0 +1,17 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Netlify Nightly Build
+
+on:
+  schedule:
+  - cron: '00 0 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger our build webhook on Netlify
+      run: curl -s -X POST "https://api.netlify.com/build_hooks/${TOKEN}"
+      env:
+        TOKEN: ${{ secrets.NETLIFY_NIGHTLY_BUILD }}
+
+
