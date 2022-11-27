@@ -4,7 +4,11 @@ module.exports = function(eleventyConfig) {
     const now = new Date();
     const month = now.getUTCMonth();
     const day = now.getUTCDate();
-    // If it's not december, show the whole map
+    // If it's November, show nothing
+    if(month == 10) {
+      return 0;
+    }
+    // If it's any other month but december, show the show map
     if(month !== 11) {
       return 23;
     }
